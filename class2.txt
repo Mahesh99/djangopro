@@ -1,0 +1,8 @@
+>>>django-admin startproject demopro
+
+manage.py - start server, create app, migrations..etc
+db.sqlite3 - sqlite database
+
+>>>python manage.py startapp posts
+
+posts is an application which contains all the functionality related to a posts 
