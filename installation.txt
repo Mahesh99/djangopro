@@ -77,3 +77,18 @@ Template tags
   - extends tag
   {% extends 'path/to/the/file' %}
   - for tag
+
+Admin site
+  for migrating database tables
+    1. python manage.py makemigrations - to create migrations - creating queries for table creation
+    2. python manager.py migrate - applying migrations - executing those queries
+  - creating super user
+    - python manage.py createsuperuser
+
+Creating a Post model
+ - in the models.py in posts app
+ - after creating the Post model class inside models.py run migration commands
+
+To register that post in admin site
+ - add below line to the admin.py
+    admin.site.register(Model_name)  
