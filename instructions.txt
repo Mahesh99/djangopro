@@ -63,6 +63,13 @@ TODO
 creating a posts app
 >>> python manage.py startapp posts
 
+Now create two view functions inside posts' views.py file and setup do url configuration
+1. create function home() which takes request as argument and should return HttpResponse object. 
+2. similary create about() 
+3. Then create urls.py in posts app and copy contents of main urls.py file.
+4. Then modify newly created urls.py and create paths to the about created home() and about() view functions
+5. Run to test
+
 
 30/04/2020
 Templates 
