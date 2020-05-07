@@ -1,0 +1,245 @@
+In [1]: from django.contrib.auth.models import User
+
+In [2]: User.objects.all()
+Out[2]: <QuerySet [<User: mahesh>]>
+
+In [3]: exit
+
+C:\Users\Mahesh\courses\fullstack\django\demopro>python manage.py shell
+Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.7.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from django.contrib.auth.models import User
+
+In [2]: User.objects.all()
+Out[2]: <QuerySet [<User: mahesh>, <User: Sai>]>
+
+In [3]: u1 = User.objects.all()
+
+In [4]: u1 = User.objects.all().first()
+
+In [5]: u1
+Out[5]: <User: mahesh>
+
+In [6]: u1.username
+Out[6]: 'mahesh'
+
+In [7]: u1.first_name
+Out[7]: ''
+
+In [8]: u1.password
+Out[8]: 'pbkdf2_sha256$180000$QpViUm48ba1n$/Rn712nUM0YZzIm+LXSKryDJfggFCj6+9vr3W/vWRjA='
+
+In [9]: u2 = User.objects.all().first()
+
+In [10]: u2.username
+Out[10]: 'mahesh'
+
+In [11]: u2 = User.objects.all().last()
+
+In [12]: u2.username
+Out[12]: 'Sai'
+
+In [13]: User.objects.all()
+Out[13]: <QuerySet [<User: mahesh>, <User: Sai>, <User: harish>]>
+In [7]: u1.first_name
+Out[7]: ''
+
+In [8]: u1.password
+Out[8]: 'pbkdf2_sha256$180000$QpViUm48ba1n$/Rn712nUM0YZzIm+LXSKryDJfggFCj6+9vr3W/vWRjA='
+
+In [9]: u2 = User.objects.all().first()
+
+In [10]: u2.username
+Out[10]: 'mahesh'
+
+In [11]: u2 = User.objects.all().last()
+
+In [12]: u2.username
+Out[12]: 'Sai'
+
+In [13]: User.objects.all()
+Out[13]: <QuerySet [<User: mahesh>, <User: Sai>, <User: harish>]>
+In [14]: u3 = User.objects.all().last()
+
+In [15]: u3
+Out[15]: <User: harish>
+
+In [16]: u2 = User.objects.all()[1]
+
+In [17]: u2
+Out[17]: <User: Sai>
+
+In [18]: 
+In [18]: User._meta.fields
+Out[18]: 
+(<django.db.models.fields.AutoField: id>,
+ <django.db.models.fields.CharField: password>,
+ <django.db.models.fields.DateTimeField: last_login>,
+ <django.db.models.fields.BooleanField: is_superuser>,
+ <django.db.models.fields.CharField: username>,
+ <django.db.models.fields.CharField: first_name>,
+ <django.db.models.fields.CharField: last_name>,
+ <django.db.models.fields.EmailField: email>,
+ <django.db.models.fields.BooleanField: is_staff>,
+ <django.db.models.fields.BooleanField: is_active>,
+ <django.db.models.fields.DateTimeField: date_joined>)
+
+In [19]: u1
+Out[19]: <User: mahesh>
+
+In [20]: u1.is_superuser
+Out[20]: True
+
+In [21]: u2.is_superuser
+Out[21]: False
+
+In [22]: User.objects.all()
+Out[22]: <QuerySet [<User: mahesh>, <User: Sai>, <User: harish>]>
+
+In [23]: from posts.models import Post
+
+In [24]: Post.objects.all()
+Out[24]: <QuerySet [<Post: My First Post Content....>, <Post: My Second Post Content....>]>
+
+In [25]: p1 = Post.objects.all()[0]
+
+In [26]: p1
+Out[26]: <Post: My First Post Content....>
+
+In [27]: p1.title
+Out[27]: 'My First Post'
+
+In [28]: p1.content
+Out[28]: 'My First Post Content'
+
+In [29]: p1.create_date
+Out[29]: datetime.datetime(2020, 5, 2, 14, 24, 6, 117623, tzinfo=<UTC>)
+
+In [30]: p1.user
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-30-2195501c9c3d> in <module>
+----> 1 p1.user
+
+AttributeError: 'Post' object has no attribute 'user'
+
+Out[28]: 'My First Post Content'
+
+In [29]: p1.create_date
+Out[29]: datetime.datetime(2020, 5, 2, 14, 24, 6, 117623, tzinfo=<UTC>)
+
+In [30]: p1.user
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-30-2195501c9c3d> in <module>
+----> 1 p1.user
+
+AttributeError: 'Post' object has no attribute 'user'
+
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-31-cc363c8cbfb1> in <module>
+----> 1 post.author
+
+NameError: name 'post' is not defined
+
+In [32]: p1.author
+Out[32]: <User: mahesh>
+
+In [33]: p1.author.username
+Out[33]: 'mahesh'
+
+In [34]: 
+In [34]: p2
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-34-32960d173fa8> in <module>
+----> 1 p2
+
+NameError: name 'p2' is not defined
+
+In [35]: p2 = Post.objects.all()[1]
+
+In [36]: p2.author
+Out[36]: <User: mahesh>
+
+In [37]: p2.author = u3
+
+In [38]: p2.author
+Out[38]: <User: harish>
+
+In [39]: p2.save()
+
+In [40]: u2
+Out[40]: <User: Sai>
+
+In [41]: u2.first_name
+Out[41]: ''
+
+In [42]: u2.first_name="Sai"
+
+In [43]: u2.last_name = "Kumar"
+
+In [44]: u2.first_name
+Out[44]: 'Sai'
+
+In [45]: u2.save()
+
+In [46]: User.objects.filter(username='naresh')
+Out[46]: <QuerySet []>
+
+In [47]: User.objects.filter(username='sai')
+Out[47]: <QuerySet []>
+
+In [48]: User.objects.filter(username='Sai')
+Out[48]: <QuerySet [<User: Sai>]>
+
+In [49]: u2 = User.objects.filter(username='Sai')
+
+In [50]: u2
+Out[50]: <QuerySet [<User: Sai>]>
+
+In [51]: u2 = User.objects.filter(username='Sai').first()
+
+In [52]: u2.first_name
+Out[52]: 'Sai'
+
+In [53]: Post.objects.filter(author=u1)
+Out[53]: <QuerySet [<Post: My First Post Content....>]>
+
+In [54]: Post.objects.all()
+
+In [47]: User.objects.filter(username='sai')
+Out[47]: <QuerySet []>
+
+In [48]: User.objects.filter(username='Sai')
+Out[48]: <QuerySet [<User: Sai>]>
+
+In [49]: u2 = User.objects.filter(username='Sai')
+
+In [50]: u2
+Out[50]: <QuerySet [<User: Sai>]>
+
+In [51]: u2 = User.objects.filter(username='Sai').first()
+
+In [52]: u2.first_name
+Out[52]: 'Sai'
+
+In [53]: Post.objects.filter(author=u1)
+Out[53]: <QuerySet [<Post: My First Post Content....>]>
+
+In [54]: Post.objects.all()
+
+In [55]: u1.post_set
+Out[55]: <django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager at 0x20e5f07cbc8>  
+
+In [56]: u1.post_set.all()
+Out[56]: <QuerySet [<Post: My First Post Content....>, <Post: Third post content....>]>
+
+In [57]: obj.model_set.all()
+In [57]: User.objects
+Out[57]: <django.contrib.auth.models.UserManager at 0x20e5d8cde08>
+
+In [58]:

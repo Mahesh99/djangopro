@@ -78,6 +78,8 @@ Template tags
   {% extends 'path/to/the/file' %}
   - for tag
 
+
+
 Admin site
   for migrating database tables
     1. python manage.py makemigrations - to create migrations - creating queries for table creation
@@ -92,3 +94,9 @@ Creating a Post model
 To register that post in admin site
  - add below line to the admin.py
     admin.site.register(Model_name)  
+
+
+Django Shell
+To open django Shell
+  >>> python manage.py shell
+parellely also see admin

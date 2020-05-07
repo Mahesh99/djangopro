@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from .models import Post
+from django.contrib.auth.models import User
 
 # request-response-cycle
 posts = [
@@ -23,6 +25,11 @@ posts = [
 
 
 def home(request):
+  # user = User.objects.filter(username="mahesh").first()
+  # posts = Post.objects.filter(author=user)
+
+  posts = Post.objects.filter(author__username="mahesh")
+
   context = {
     'posts':posts
   }
