@@ -1,15 +1,14 @@
-{% extends 'posts/base.html' %} 
-
-{% block content %}
-  <h1>Home Page</h1>
-
+{% extends 'posts/base.html' %} {% block content %} 
+{% load static %}
+<main>
   {% for post in posts %}
-    <div>
+    <div class="card">
       <h1>{{post.title}}</h1>
       <p>{{post.content}}</p>
       <p>{{post.author}}</p>
       <p>{{post.date}}</p>
     </div>
-  {% endfor %}
-
+  {% endfor %} 
+</main>
 {% endblock content %}
+

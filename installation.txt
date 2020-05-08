@@ -63,13 +63,6 @@ TODO
 creating a posts app
 >>> python manage.py startapp posts
 
-Now create two view functions inside posts' views.py file and setup do url configuration
-1. create function home() which takes request as argument and should return HttpResponse object. 
-2. similary create about() 
-3. Then create urls.py in posts app and copy contents of main urls.py file.
-4. Then modify newly created urls.py and create paths to the about created home() and about() view functions
-5. Run to test
-
 
 30/04/2020
 Templates 
@@ -103,34 +96,3 @@ To register that post in admin site
     admin.site.register(Model_name)  
 
 
-Django Shell
-To open django Shell
-  >>> python manage.py shell
-parellely also see admin
-
-DBMS - Database management system - to provide a way to organise and store data
-Eg: Oracle, Mysql, sqlite..etc
-database we are using is sqlite3-RDBMS(Relational DBMS)
-RDMBS -> Tables -> columns and rows -> 
-eg:table - student register, columns -> Rollno,Name, rows-> records of each student
-
-To create tables in sqlite DB we need to use SQL language
-to create student register table query needed to be executed
->>> CREATE TABLE student_register (rollno Integer, name varchar);
-
-
-ORM - Object Relational Mapping
-DBMS <-> ORM <-> python
-
-
-Static files 
-  static > posts > css
-                 > js
-                 > img
-
-after placing static files in the static folder.
-To make changes effective 
-> 1. You need to restart the server
-> 2. do hard refresh(ctrl+click or ctrl+f5)
-> 3. you might need to restart vscode
-> 4. delete all cookies
