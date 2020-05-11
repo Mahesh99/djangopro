@@ -28,7 +28,7 @@ def home(request):
   # user = User.objects.filter(username="mahesh").first()
   # posts = Post.objects.filter(author=user)
 
-  posts = Post.objects.filter(author__username="mahesh")
+  posts = Post.objects.all()
 
   context = {
     'posts':posts

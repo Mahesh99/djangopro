@@ -17,6 +17,12 @@
         <li><a href="">Login</a></li>
       </ul>
     </nav>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="msg">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+
     {% block content %}
     {% endblock content %}
   </body>

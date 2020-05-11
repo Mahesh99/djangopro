@@ -134,3 +134,12 @@ To make changes effective
 > 2. do hard refresh(ctrl+click or ctrl+f5)
 > 3. you might need to restart vscode
 > 4. delete all cookies
+
+
+User registration page 
+> 1. add path to /register
+> 2. create users app(python manager.py startapp users) and add it to the settings.py
+> 3. inside users/views.py create register view
+> 4. create template register.html in users app
+> 5. add code in register view to handle registration form input
+> 6. create forms.py in users app to have email field in our form

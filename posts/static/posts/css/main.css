@@ -60,3 +60,16 @@ main {
   justify-content: space-around;
   align-items: center;
 }
+
+.container {
+  width: 100%;
+  max-width: 756px;
+  margin: auto;
+}
+
+.msg {
+  border: 1px solid gray;
+  width: 100%;
+  max-width: 756px;
+  margin: auto;
+}
