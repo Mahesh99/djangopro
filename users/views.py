@@ -5,7 +5,6 @@ from django.contrib import messages
 from .forms import UserRegistrationForm
 
 
-# Create your views here.
 def register(request):
   if request.method == "POST":
     form = UserRegistrationForm(request.POST) # bound form

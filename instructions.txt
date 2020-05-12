@@ -143,3 +143,14 @@ User registration page
 > 4. create template register.html in users app
 > 5. add code in register view to handle registration form input
 > 6. create forms.py in users app to have email field in our form
+
+
+Login and Logout Functionality
+
+> after successful Login. request objet will have user object in it
+
+> create login.html and logout.html templates/users
+> change main urls.py to handle login/ and logout/ routes
+> change base.html <nav> bar to display user name when he is logged in 
+> also show "Login" nav item when user is logged out and "Logout" nav item when user is logged in
+> make home accessible only when user is logged in
