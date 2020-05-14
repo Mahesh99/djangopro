@@ -154,3 +154,7 @@ Login and Logout Functionality
 > change base.html <nav> bar to display user name when he is logged in 
 > also show "Login" nav item when user is logged out and "Logout" nav item when user is logged in
 > make home accessible only when user is logged in
+
+
+Profile setup
+>model - user -> users app
