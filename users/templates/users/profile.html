@@ -1,12 +1,12 @@
 {% extends 'posts/base.html' %} {% block content %}
 <div>
-  <div class="media">
+  <div class="card w-25">
     <img
-      class="rounded-circle account-img"
+      class="rounded-circle account-img card-img-top w-90"
       src="{{user.profile.image.url}}"
       alt=""
     />
-    <div class="media-body">
+    <div class="card-body">
       <h2 class="account-heading">{{user.username}}</h2>
     </div>
   </div>

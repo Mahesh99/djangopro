@@ -158,3 +158,9 @@ Login and Logout Functionality
 
 Profile setup
 >model - user -> users app
+
+Create profile on user creation
+> Signals(js events eg.btn click)
+  > create signals.py in users app
+  > define two receiver functions - create_profile and save_profile
+  > add code to the functions
