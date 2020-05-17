@@ -96,3 +96,9 @@ To register that post in admin site
     admin.site.register(Model_name)  
 
 
+
+Profile setup
+> create ProfileUpdateForm and UserUpdateForm in forms.py
+> modify profile view to include above created forms
+> modify profile.html template to deal with above created forms
+> base.html updated with bootstrap classes

@@ -1,4 +1,5 @@
 {% extends 'posts/base.html' %} {% block content %}
+{% load crispy_forms_tags %}
 <div>
   <div class="card w-25">
     <img
@@ -7,7 +8,12 @@
       alt=""
     />
     <div class="card-body">
-      <h2 class="account-heading">{{user.username}}</h2>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form_u|crispy}}
+        {{form_p|crispy}}
+        <button class='btn btn-primary mt-3'>submit</button>
+    </form>
     </div>
   </div>
 </div>
