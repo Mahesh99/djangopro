@@ -1,8 +1,8 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from .forms import CreatePostForm
 
 # request-response-cycle
 posts = [
@@ -31,7 +31,7 @@ def home(request):
   # user = User.objects.filter(username="mahesh").first()
   # posts = Post.objects.filter(author=user)
 
-  posts = Post.objects.all()
+  posts = Post.objects.all().order_by('-create_date') # - -> descending order
 
   context = {
     'posts':posts
@@ -41,6 +41,26 @@ def home(request):
 
 def about(request):
   return render(request,"posts/about.html")
+
+
+def createPost(request):
+  if request.method == "POST":
+    form = CreatePostForm(request.POST)
+    if form.is_valid():
+      form.save(request.user)
+      return redirect('posts-home')
+
+  else:
+    form = CreatePostForm()
+  return render(request, 'posts/createpost.html', {'form':form})
+
+
+
+
+
+
+
+
 
 
 

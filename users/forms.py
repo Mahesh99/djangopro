@@ -23,6 +23,7 @@ class ProfileUpdateForm(forms.ModelForm):
     fields = ['image']
 
 
+
 # class UserUpdateForm2(forms.Form):
 #   username = forms.CharField(label="username")
 #   email = forms.EmailField(label="email")

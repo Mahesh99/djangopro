@@ -166,3 +166,8 @@ Create profile on user creation
   > add code to the functions
 
 
+Create post
+> in home.html(posts app) create a card with a link to the createPost view
+> create CreatePostForm with two fields to be listed in the form and override save() method to set author
+> create createPost view and write code in it
+> create path to the createPost view in urls.py(posts app)
