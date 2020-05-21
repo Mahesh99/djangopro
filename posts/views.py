@@ -54,6 +54,20 @@ def createPost(request):
     form = CreatePostForm()
   return render(request, 'posts/createpost.html', {'form':form})
 
+def editPost(request, post_id):
+  post = Post.objects.get(id=post_id) # get returns only 1 object if it exists otherwise error
+  if request.method == 'POST':
+    form = CreatePostForm(request.POST, instance=post)
+    if form.is_valid():
+      form.save(request.user)
+      return redirect('posts-home')
+  else:
+    form = CreatePostForm(instance=post)
+
+  return render(request,'posts/createpost.html',{'form':form})
+
+
+
 
 
 
