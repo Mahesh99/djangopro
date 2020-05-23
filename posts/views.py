@@ -2,7 +2,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import CreatePostForm
+from .forms import CreatePostForm, CustomerMessageForm
+from django.contrib import messages
 
 # request-response-cycle
 posts = [
@@ -40,7 +41,15 @@ def home(request):
   return render(request,"posts/home.html",context)
 
 def about(request):
-  return render(request,"posts/about.html")
+  if request.method == 'POST':
+    form = CustomerMessageForm(request.POST)
+    if form.is_valid():
+      form.save()
+      messages.success(request,f'Message sent succesfully')
+      return redirect('posts-about')
+  else:
+    form = CustomerMessageForm()
+  return render(request,"posts/about.html",{'form':form})
 
 
 def createPost(request):

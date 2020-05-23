@@ -1,0 +1,62 @@
+Template tags
+  if
+  else
+  for 
+  extends 
+  load
+  block
+
+{% if <condition> %}
+  <some code to included when condition becomes true>
+{% else %}
+  <some code to included when condition becomes false>
+{% endif %}
+
+
+template -> 
+  - form, posts
+  - request
+  - user
+  eg: user.username,
+      user.profile.image.url
+
+      Model 1 and Model 2 have a one to one relation
+      user.profile
+      profile.user
+
+
+{% load static %} 
+{% load crispy_forms_tags %}
+
+load()
+
+
+css kOSAM
+static files
+  - css -> main.css
+  - img -> img1.png
+  - js -> main.js
+
+
+q = Post.objects.filter(title="Some title", content="some content") => queryset
+item = q.first()
+
+item = Post.objects.get(title="Some title", content="some content") => Post instance
+
+q.order_by("first_name,-last_name")  # Arun raj, Arun kumar,Bharath, akhil
+
+q.count() -> count of posts,users,..etc
+
+q.delete() -> deletes all records
+p = Post.objects.all().first()
+p.delete()
+
+Post
+Profile
+
+
+
+
+CustomerMessage - model
+CustomerMessageForm - form
+change code in contact_us() view to display form

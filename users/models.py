@@ -17,3 +17,19 @@ class Profile(models.Model):
       img.thumbnail(output_image)
       img.save(self.image.path)
 
+
+# u = User.objects.all().first() 
+# p = Profile.objects.all().first()
+
+# bu<->
+# su<->bp
+
+# bu = User.objects.filter(username="Bharath").first() 
+# bp = Profile.objects.filter(user = bu).first()
+
+# bp = Profile.objects.filter(user__username='Bharath')
+
+
+# su = User.objects.filter(username="Saiteja").first() 
+# bp.user = su
+# bp.save()

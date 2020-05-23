@@ -1,5 +1,6 @@
 from django import forms
-from .models import Post
+from .models import Post, CustomerMessage
+
 
 class CreatePostForm(forms.ModelForm):
   class Meta:
@@ -9,3 +10,8 @@ class CreatePostForm(forms.ModelForm):
   def save(self, author):
     self.instance.author = author
     super().save()
+
+class CustomerMessageForm(forms.ModelForm):
+  class Meta:
+    model = CustomerMessage
+    fields = ['name','email','subject','message']

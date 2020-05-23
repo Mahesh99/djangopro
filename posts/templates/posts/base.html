@@ -31,9 +31,9 @@
       <div class="collapse navbar-collapse" id="#navbar">
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="">{{user.username}}</a>
-          </li>
+            <li class="nav-item">
+              <a class="na  v-link" href="">{{user.username}}</a>
+            </li>
           {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'posts-home' %}">Home</a>
