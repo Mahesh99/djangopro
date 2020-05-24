@@ -1,0 +1,31 @@
+{% extends 'posts/base.html' %}
+{% load mytemptags %}
+{% block content  %}
+  <main class="container">
+    <p>{{ 'hello'|add:'world'}}</p>
+    <p>{{ 'hello world'|cut:'l'}}</p>
+    <p>{{ 'hello world'|length}}</p>
+    <p>{{ nums|length}}</p>
+    <p>{{ nums|first}}</p>
+    <p>{{ nums|last}}</p>
+    <p>{{ string|linenumbers}}</p>
+    <p>{{nums.1|upper}}</p>
+    <p>{{nums.2|lower}}</p>
+    <p>{{nums|random}}</p>
+    <p>{{string|default:"This string is empty!"}}</p>
+    <p>{{nums|join:' * '}}</p>
+
+    <hr>
+    <h4>Custom template tags</h4>
+    <p>{{ 'hello' | add_str:'world' }}</p>
+
+    <p>{{ .4678 | percent }}</p>
+
+    <p>{% join_strs '*' 'hello' 'world' 'hey'  %}</p>
+    
+    <div>
+      {% dplst nums %}
+    </div>
+
+  </main>
+{% endblock content  %}

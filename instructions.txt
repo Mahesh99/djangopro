@@ -171,3 +171,20 @@ Create post
 > create CreatePostForm with two fields to be listed in the form and override save() method to set author
 > create createPost view and write code in it
 > create path to the createPost view in urls.py(posts app)
+
+
+Built-in filters and Custom Filter
+> add, cut, first, last, join, lower, upper, length, default, random, wordcount, date, percent
+
+Custome filters and tags
+To create and use custom filters and tags
+> create templatetags directory in posts app
+> create posts_extras in the created directory
+> in settings.py in TEMPLATE>OPTIONS>libraries 
+   - create a key-value pair as tag library and path of the tag library
+> in posts_extras.py add code for the tags and filters you want to create
+
+> To import this tag library use {% load <taglibraryname> %} in the template
+
+
+

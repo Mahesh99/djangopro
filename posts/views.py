@@ -76,6 +76,11 @@ def editPost(request, post_id):
   return render(request,'posts/createpost.html',{'form':form})
 
 
+def filters(request):
+  nums = ['one','two','THREE','four']
+  string = "hello\nworld\nhey"
+  return render(request,'posts/filters.html',{'nums':nums,'string':string})
+
 
 
 
