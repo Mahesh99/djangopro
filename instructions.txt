@@ -174,7 +174,7 @@ Create post
 
 
 Built-in filters and Custom Filter
-> add, cut, first, last, join, lower, upper, length, default, random, wordcount, date, percent
+> add, cut, first, last, join, lower, upper, length, default, random, wordcount, date
 
 Custome filters and tags
 To create and use custom filters and tags
@@ -186,5 +186,16 @@ To create and use custom filters and tags
 
 > To import this tag library use {% load <taglibraryname> %} in the template
 
+
+Pagination of home page
+
+Query parameters
+<scheme>://<authority>/path/?key1=value1&key2=value2
+
+http://localhost:8000/home/?page=7
+
+> Learn about Paginator and Page object using shell
+> change home view code in view.py of posts app to implement pagination
+> change home.html template to display pagination at the bottom
 
 

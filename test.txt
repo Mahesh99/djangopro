@@ -60,3 +60,21 @@ Profile
 CustomerMessage - model
 CustomerMessageForm - form
 change code in contact_us() view to display form
+
+
+To create custom tags/filters we imported a module form django. What's the name of the module?
+> template
+
+What are the 3 decorator functions we used to create custom tags and filter?
+> filter, simple_tag, inclusion_tag
+
+In which class all these 3 decorators are available?
+> Library class
+
+
+Name 2 build-in filters
+join,add, upper, lower, linenumbers
+first, last, random, cut
+
+
+

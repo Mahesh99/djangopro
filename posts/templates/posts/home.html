@@ -16,5 +16,32 @@
     <p>{{post.date}}</p>
   </div>
   {% endfor %}
+
+{% if posts.has_other_pages %}
+  <ul class="pagination mr-auto w-auto">
+    {% if posts.has_previous %}
+      <li><a class="m-1" href="?page={{posts.previous_page_number}}">Previous</a></li>
+    {% else %}
+      <li class="disabled m-1"> <span>Previous</span></li>
+    {% endif %}
+
+    {% for i in posts.paginator.page_range %}
+
+      {% if posts.number == i %}
+        <li class="active m-1"><span>{{posts.number}}</span></li>
+      {% else %}
+        <li><a class="m-1" href="?page={{i}}">{{i}}</a></li>
+      {% endif %}
+
+    {% endfor %}
+
+
+    {% if posts.has_next %}
+      <li><a href="?page={{posts.next_page_number}}" class="m-1">Next</a></li>
+    {% else %}
+      <li class="disabled m-1"> <span>Next</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 </main>
 {% endblock content %}

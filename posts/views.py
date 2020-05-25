@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import CreatePostForm, CustomerMessageForm
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # request-response-cycle
 posts = [
@@ -29,10 +30,17 @@ posts = [
 
 @login_required
 def home(request):
-  # user = User.objects.filter(username="mahesh").first()
-  # posts = Post.objects.filter(author=user)
+  post_list = Post.objects.all().order_by('-create_date') 
+  page = request.GET.get('page',1)
 
-  posts = Post.objects.all().order_by('-create_date') # - -> descending order
+  paginator = Paginator(post_list,6)
+  
+  try:
+    posts = paginator.page(page)
+  except PageNotAnInteger:
+    posts = paginator.page(1)
+  except EmptyPage:
+    posts = paginator.page(paginator.num_pages)
 
   context = {
     'posts':posts
