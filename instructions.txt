@@ -199,3 +199,8 @@ http://localhost:8000/home/?page=7
 > change home.html template to display pagination at the bottom
 
 
+DELETE POST & PROHIBITING USERS FROM UNAUTHORISED ACCESS
+> change code to show button only for the authorised users
+> Add path to delete Post in urls.py
+> add deletePost in views.py
+> Add code in the deletePost view to delete post 

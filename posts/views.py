@@ -47,7 +47,7 @@ def home(request):
   }
 
   return render(request,"posts/home.html",context)
-
+@login_required
 def about(request):
   if request.method == 'POST':
     form = CustomerMessageForm(request.POST)
@@ -59,7 +59,7 @@ def about(request):
     form = CustomerMessageForm()
   return render(request,"posts/about.html",{'form':form})
 
-
+@login_required
 def createPost(request):
   if request.method == "POST":
     form = CreatePostForm(request.POST)
@@ -71,15 +71,17 @@ def createPost(request):
     form = CreatePostForm()
   return render(request, 'posts/createpost.html', {'form':form})
 
+@login_required
 def editPost(request, post_id):
   post = Post.objects.get(id=post_id) # get returns only 1 object if it exists otherwise error
-  if request.method == 'POST':
-    form = CreatePostForm(request.POST, instance=post)
-    if form.is_valid():
-      form.save(request.user)
-      return redirect('posts-home')
-  else:
-    form = CreatePostForm(instance=post)
+  if request.user == post.author:
+    if request.method == 'POST':
+      form = CreatePostForm(request.POST, instance=post)
+      if form.is_valid():
+        form.save(request.user) # Do i need to pass request.user to save()?
+        return redirect('posts-home')
+    else:
+      form = CreatePostForm(instance=post)
 
   return render(request,'posts/createpost.html',{'form':form})
 
@@ -89,6 +91,17 @@ def filters(request):
   string = "hello\nworld\nhey"
   return render(request,'posts/filters.html',{'nums':nums,'string':string})
 
+@login_required
+def deletePost(request,post_id):
+  try:
+    post = Post.objects.get(id=post_id)
+    if request.user == post.author:
+      post.delete()
+      return redirect('posts-home')
+    else:
+      return HttpResponse("Prohibited")
+  except Post.DoesNotExist:
+    return HttpResponse("Server Error")
 
 
 
