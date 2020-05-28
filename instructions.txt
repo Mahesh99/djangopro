@@ -204,3 +204,17 @@ DELETE POST & PROHIBITING USERS FROM UNAUTHORISED ACCESS
 > Add path to delete Post in urls.py
 > add deletePost in views.py
 > Add code in the deletePost view to delete post 
+
+
+CLASS BASED VIEWS / GENERIC VIEWS
+
+> ListView(posts/post_list.html)
+  DetailView(posts/post_detail.html)
+  CreateView(posts/post_form.html)
+  UpdateView(same as create --> posts/post_form.html)
+  DeleteView(posts/post_confirm_delete.html)
+
+> LoginRequiredMixin is like login_required should be added first while inheriting
+> UserPassesTestMixin to provide access only to authorized user
+
+

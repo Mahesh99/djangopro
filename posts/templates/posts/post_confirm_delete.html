@@ -1,0 +1,17 @@
+{% extends 'posts/base.html' %} 
+{% load static %}
+
+{% block content %} 
+<main class="container">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="card card-body mr-auto">
+      <p>Do you want to delete "{{object.title}}"</p>
+      <span>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'detail' object.id %}" class="btn btn-muted ">Cancel</a>
+      </span>
+    </div>
+  </form>
+  </main>
+{% endblock content %} 

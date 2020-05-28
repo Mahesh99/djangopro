@@ -5,6 +5,14 @@ from django.contrib.auth.decorators import login_required
 from .forms import CreatePostForm, CustomerMessageForm
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import (
+    ListView,
+    CreateView, 
+    DetailView, 
+    UpdateView,
+    DeleteView
+)
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # request-response-cycle
 posts = [
@@ -103,16 +111,6 @@ def deletePost(request,post_id):
   except Post.DoesNotExist:
     return HttpResponse("Server Error")
 
-
-
-
-
-
-
-
-
-
-
 # Exercise 1
 # TODO 1: create a contact_us() view
 # TODO 2: set up path in the urls.py(posts app)
@@ -126,3 +124,62 @@ def deletePost(request,post_id):
 
 # Exercise 3
 # TODO : create contact details(email,phone,address) as dictionary and send it as a context to contactus.html template
+
+
+
+
+# CLASS BASED VIEWS
+
+# template name -> <app_name>/<model_name>_list.html
+# context object name = object_list
+class PostListView(ListView):
+    model = Post
+    template_name = 'posts/home.html'
+    context_object_name = 'posts'
+    ordering = ['-create_date']
+
+
+# template name <app_name>/<model_name>_detail.html => posts/post_detail.html
+# context object name -> object
+class PostDetailView(DetailView):
+    model = Post
+
+
+
+# template name -> <app_name>/<model_name>_form.html
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title','content']
+    template_name = 'posts/createpost.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+# template name -> <app_name>/<model_name>_form.html
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    fields = ['title','content']
+    template_name = 'posts/createpost.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+# template name -> <app_name>/<model_name>_confirm_delete.html ->  posts/post_confirm_delete.html
+# context object name -> object
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = "/home/"
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False

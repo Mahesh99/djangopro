@@ -1,0 +1,23 @@
+{% extends 'posts/base.html' %} 
+{% load static %}
+
+{% block content %} 
+<main class="container">
+  <div class="card card-body mr-auto">
+    <h1 class="mb-0">{{object.title}}
+      {% if request.user == object.author %}
+        <a href="{% url 'posts-edit' object.id %}" class="btn text-primary">Edit</a>
+      {% endif %}
+
+    </h1>
+    <small class="text-muted">{{object.create_date | date:"d,M Y" }}</small>
+    <small class="text-success">Word count: {{ object.content|wordcount }}</small>
+    <p>{{object.content}}</p>
+    <p>{{object.author}}</p>
+    <p>{{object.date}}</p>
+    {% if request.user == object.author %}
+      <span><a href="{% url 'posts-delete' object.id %}" class="btn btn-outline-danger btn-sm float-right">Delete</a></span>
+    {% endif %}
+    </div>
+  </main>
+{% endblock content %} 
